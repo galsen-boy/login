@@ -1,64 +1,70 @@
-# Login
-### Étapes
+1. Connexion à la console en tant qu'utilisateur et superutilisateur (root) :
 
-1. Démarrer la VM pour booter sur le système Debian précédemment installé.
+    Lorsque tu démarres la machine virtuelle, elle te demande de te connecter. Tu dois entrer ton nom d'utilisateur (par exemple "student") puis appuyer sur "Entrée". Ensuite, il te sera demandé d'entrer le mot de passe associé à cet utilisateur. Tape le mot de passe et appuie sur "Entrée".
+    Pour te connecter en tant que superutilisateur, c'est le même processus, sauf que le nom d'utilisateur sera "root" et il faudra entrer le mot de passe associé à l'utilisateur root.
 
-2. Pour l'utilisateur et le superutilisateur (root) :
-    - Se connecter dans la console :
-        - Utilisez votre nom d'utilisateur pour vous connecter.
-    - Effacer la console en utilisant le raccourci clavier :
-        - Appuyez sur ``Ctrl + L``.
-    - Changer le mot de passe en michelle :
-        - Tapez la commande : ``passwd`` et suivez les instructions.
-    - Afficher l'historique des commandes en utilisant cinq frappes au maximum (en utilisant l'auto-complétion) :
-        - Tapez ``history`` et appuyez sur Enter.
-    - Se déconnecter en utilisant le raccourci clavier :
-            Appuyez sur ``Ctrl + D`` ou tapez ``exit``.
+2. Effacer la console avec le raccourci clavier :
 
-    - Se connecter en tant que root sur la troisième console Linux :
-        - Appuyez sur ``Ctrl + Alt + F3`` pour accéder à la troisième console.
-    - Connectez-vous avec le nom d'utilisateur ``root`` et le mot de passe correspondant.
+    Pour nettoyer l'écran et effacer ce qui est affiché dans la console, utilise le raccourci clavier Ctrl + L. Cela te donne un écran vide, mais les commandes exécutées précédemment sont toujours dans l'historique.
 
-    - Vérifier la connectivité Internet avec la commande :
-        - Tapez : ``ping google.com`` et interrompez le programme avec ``Ctrl + C`` après quelques sauts.
+3. Changer le mot de passe :
 
-###  Trouver les informations demandées
+    Pour changer le mot de passe de l'utilisateur actuel, tape la commande suivante :
 
-- Trouver l'inode d'un fichier spécifique :
-    - Utilisez la commande : ``ls -i`` <nom_du_fichier> pour obtenir l'inode. Par exemple, pour obtenir l'inode de ``/etc/fstab`` :
-```
-ls -i /etc/fstab
+    passwd
 
-```
-- Trouver l'ID utilisateur actuel :
-    - Utilisez la commande : ``id -u``.
+    Ensuite, le système te demandera d'entrer ton mot de passe actuel pour confirmer que c'est bien toi. Une fois cela fait, il te demandera le nouveau mot de passe (dans notre cas, "michelle"), que tu devras taper deux fois.
 
-- Trouver le PID d'un programme, par exemple ``bash`` :
-    - Utilisez la commande : ``pgrep bash`` pour obtenir le PID du programme ``bash``.
+4. Afficher l'historique des commandes en utilisant cinq touches ou moins :
 
-## Résumé des commandes
+    Les commandes que tu as exécutées précédemment sont enregistrées dans ce qu'on appelle l'historique des commandes. Pour accéder rapidement à une commande que tu as utilisée auparavant, utilise le raccourci Ctrl + R, qui lance une recherche inverse dans l'historique.
+    Tape ensuite une partie du nom de la commande que tu cherches, et elle apparaîtra automatiquement.
 
-- Changer le mot de passe :
-```
-passwd
-```
+5. Se déconnecter avec le raccourci clavier :
 
-- Afficher l'historique :
-```
-history
-```
+    Pour te déconnecter de la session en cours, utilise le raccourci Ctrl + D. Cela revient à taper la commande exit, qui termine la session.
 
-- Vérifier l'inode d'un fichier :
-```
-ls -i /etc/fstab
-```
+Connexion sur la troisième console Linux en tant que root :
 
-- Obtenir l'ID utilisateur :
-```
-id -u
-```
+    Les systèmes Linux permettent d'ouvrir plusieurs consoles (ou "terminaux virtuels"). Pour accéder à la troisième console, utilise le raccourci Ctrl + Alt + F3. Une fois là, connecte-toi en tant que "root".
 
-- Trouver le PID de bash :
-```
+Vérifier la connectivité Internet :
+
+    Pour vérifier si tu es connecté à Internet, utilise la commande suivante :
+
+    ping google.com
+
+    Cette commande envoie des "paquets" de données à google.com et te montre combien de temps cela prend pour les recevoir en retour. Pour interrompre cette opération, utilise le raccourci Ctrl + C.
+
+Identifier les éléments à l'aide de commandes :
+
+    Pour obtenir l'inode d'un fichier spécifique :
+        Chaque fichier sur le système de fichiers Linux possède un numéro unique appelé "inode". Pour voir ce numéro, utilise :
+
+        bash
+
+    ls -i /chemin/vers/le/fichier
+
+    Par exemple, ls -i /etc/fstab affiche l'inode du fichier /etc/fstab.
+
+Pour obtenir l'identifiant de l'utilisateur actuel :
+
+    Tape :
+
+    bash
+
+    id -u
+
+    Cela te donne un nombre qui représente ton utilisateur (par exemple, "0" pour root, "1000" pour l'utilisateur "student").
+
+Pour obtenir le PID d'un programme, par exemple "bash" :
+
+    Chaque programme en cours d'exécution possède un identifiant unique appelé PID (Process Identifier). Pour trouver le PID de "bash", tape :
+
+pidof bash
+
+ou
+
 pgrep bash
-```
+
+Cela affiche le numéro de processus associé à "bash".
